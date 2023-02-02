@@ -1,0 +1,19 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+matplotlib = "*"
+numpy = "*"
+pillow = "*"
+opencv-python-headless = "*"
+tfds-nightly = "*"
+tensorflow = "*"
+pandas = "*"
+jinja2 = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.10"
