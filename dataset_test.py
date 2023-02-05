@@ -32,6 +32,16 @@ def predict(model, image_path):
     preds = model.predict(x)
     return preds
 
+def display_prediction(predictions):
+    for i, class_prob in enumerate(predictions[0]):
+        print(f"Class {i} probability: {class_prob * 100:.2f}%")
+
+    class_index = np.argmax(predictions)
+    prediction_percentage = predictions[0][class_index] * 100
+    print(f"\nPredicted class: {class_names[class_index]}")
+    print(f"Prediction percentage: {prediction_percentage:.2f}%")
+
+
 # Load the trained model
 model = keras.models.load_model('gmshimg.h5')
 
@@ -50,36 +60,10 @@ test_ds = test_ds.map(preprocess).batch(32)
 test_loss, test_accuracy = model.evaluate(test_ds)
 print('Test accuracy: {:5.2f}%'.format(100 * test_accuracy))
 
-"""
-predict_dataset = tf.convert_to_tensor(np.random.random((64, 64, 3)))
-predict_dataset = tf.cast(predict_dataset, tf.float32) / 255.0
-predict_dataset = tf.reshape(predict_dataset, (64, 64, 3))
-
-def display_prediction_percentage(model, example):
-    prediction = model.predict(np.expand_dims(example, axis=0))
-    class_index = np.argmax(prediction)
-    prediction_percentage = prediction[0][class_index] * 100
-
-    for i, class_prob in enumerate(prediction[0]):
-        print(f"Class {i} probability: {class_prob * 100:.2f}%")
-
-    print(f"\nPredicted class: {class_names[class_index]}")
-    print(f"Prediction percentage: {prediction_percentage:.2f}%")
-
-display_prediction_percentage(model, predict_dataset)
-"""
-
-
 # Make predictions
-predictions = predict(model, 'triangle_1669.jpg')
+display_prediction(predict(model, 'predict_images/triangle_1669.jpg'))
+display_prediction(predict(model, 'predict_images/rectangle_2424.jpg'))
+display_prediction(predict(model, 'predict_images/circle_3828.jpg'))
 
 # Display the percentage of predictions for each class
 #print(predictions[0])
-
-for i, class_prob in enumerate(predictions[0]):
-    print(f"Class {i} probability: {class_prob * 100:.2f}%")
-
-class_index = np.argmax(predictions)
-prediction_percentage = predictions[0][class_index] * 100
-print(f"\nPredicted class: {class_names[class_index]}")
-print(f"Prediction percentage: {prediction_percentage:.2f}%")
