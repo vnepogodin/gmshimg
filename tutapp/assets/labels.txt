@@ -1,0 +1,3 @@
+0 circle
+1 rectangle
+2 triangle

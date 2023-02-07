@@ -64,6 +64,8 @@ print('Test accuracy: {:5.2f}%'.format(100 * test_accuracy))
 display_prediction(predict(model, 'predict_images/triangle_1669.jpg'))
 display_prediction(predict(model, 'predict_images/rectangle_2424.jpg'))
 display_prediction(predict(model, 'predict_images/circle_3828.jpg'))
+display_prediction(predict(model, 'predict_images/photo_rectangle.jpg'))
+display_prediction(predict(model, 'predict_images/photo_triangle.jpg'))
 
 # Display the percentage of predictions for each class
 #print(predictions[0])
