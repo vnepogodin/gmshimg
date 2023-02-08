@@ -26,7 +26,7 @@ GUI Application
 
 The accompanying GUI provides a user-friendly interface for using the gmshimg model. The GUI allows you to select an image and obtain a prediction of the geometric shapes present in the image. A preview of the GUI is shown below:
 
-![Demo image](./preview.png)
+<img src="./preview.png" alt="Demo image"></img>
 
 Installation
 ------------
